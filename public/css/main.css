@@ -128,3 +128,8 @@ button:hover {
   color: #fff;
   transform: translateY(-7px);
 }
+.back {
+  font-family: "Lilita one";
+  margin-left: 40%;
+  font-size: 30px;
+}
