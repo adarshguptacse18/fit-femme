@@ -132,4 +132,6 @@ button:hover {
   font-family: "Lilita one";
   margin-left: 40%;
   font-size: 30px;
+  text-decoration: none;
+  color: rgb(212, 86, 107);
 }
