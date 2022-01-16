@@ -63,7 +63,6 @@ function gotPoses(poses) {
       });
     }
     const angle = Math.round(find_angle(...points));
-    console.log(angle); 
     if(angle > exerciseInfo[excerciseType].upperLimit) {
         if(dir == 0) {
             dir = 1;
@@ -108,5 +107,23 @@ function draw() {
   //fill(0,0,255);
   //ellipse(eyelX, eyelY, 50);
 
+
+}
+
+
+
+try{
+  let currentTime = Date.now();
+  const timerElement = document.getElementsByName('timer')[0];
+  
+  setInterval(() => {
+    const distance = Date.now() - currentTime;
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if(seconds < 10) seconds = `0${seconds}`;
+    if(minutes < 10) minutes = `0${minutes}`;
+    timerElement.textContent = `${minutes}:${seconds}`;
+  }, 1000);
+} catch(e) {
 
 }
