@@ -4,9 +4,12 @@ let newPoints = [];
 let newAngle = 0;
 let repCount = 0;
 let dir = 0;
+let currentTime;
+let stopSession = false;
 let shouldTimerStart = false;
 const repCountElement = document.getElementsByName('repCount')[0];
 const caloriesElement = document.getElementsByName('calories')[0];
+const endButton = document.getElementsByTagName('button')[0];
 const exerciseInfo = {
   bicepCurls: {
     index: [6, 8, 10],
@@ -43,7 +46,7 @@ function find_angle(A,B,C) {
 }
 
 function setup() {
-  createCanvas(500, 500).parent("canvas");
+  createCanvas(640, 480).parent("canvas");
   video = createCapture(VIDEO);
   video.hide();
   poseNet = ml5.poseNet(video, modelReady);
@@ -52,6 +55,7 @@ function setup() {
 }
 
 function updateRepCount() {
+    if(stopSession) return;
     repCountElement.textContent = repCount;
     const newCalories = Math.round(repCount * exerciseInfo[excerciseType].cal);
     caloriesElement.textContent = newCalories;
@@ -103,7 +107,8 @@ function modelReady() {
 function draw() {
   image(video, 0, 0);
   if(newPoints.length == 3) {
-    shouldTimerStart = true;
+    if(!currentTime) currentTime = Date.now();
+    if(!stopSession) shouldTimerStart = true;
 		fill(0, 255, 0);
     newPoints.forEach((p) => {
       circle(p.x, p.y, 30);
@@ -117,18 +122,15 @@ function draw() {
       line(prev.x, prev.y, cur.x, cur.y);
     }
   }
-  // fill(255, 0, 0);
-  // ellipse(noseX, noseY, d);
-  //fill(0,0,255);
-  //ellipse(eyelX, eyelY, 50);
-
 
 }
 
 
-
+function stopTimer(){
+  shouldTimerStart = false;
+  stopSession = true;
+}
 try{
-  let currentTime = Date.now();
   setInterval(() => {
     if(!shouldTimerStart) return;
     const timerElement = document.getElementsByName('timer')[0];
@@ -142,3 +144,5 @@ try{
 } catch(e) {
 
 }
+
+endButton.addEventListener('click', stopTimer)
