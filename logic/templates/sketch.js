@@ -43,7 +43,7 @@ function find_angle(A,B,C) {
 }
 
 function setup() {
-  createCanvas(640, 480).parent("canvas");
+  createCanvas(500, 500).parent("canvas");
   video = createCapture(VIDEO);
   video.hide();
   poseNet = ml5.poseNet(video, modelReady);
