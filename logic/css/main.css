@@ -6,10 +6,11 @@
   font-size: 60px;
   margin-top: 20px;
 }
-.canvasOutput {
-  border-radius: 30px;
+#canvas {
+  border-radius: 30px !important;
   margin-left: 50px;
   margin-top: 30px;
+  max-width: 200px;
 }
 .column {
   float: left;
