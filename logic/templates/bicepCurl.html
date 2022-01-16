@@ -19,27 +19,23 @@
 </head>
 
 <body>
-  <div class="panel-block">
-    <video class="video" width="300px" height="300px" hidden=true></video>
-  </div>
+
   <div class="row">
   <div class="column">
     <div class="container" id="canvas"></div>
-    <div class="container" name="repCount">1000</div>
-    <script src="sketch.js"></script>
   </div>
   <div class="column">
     <p class="heading">Biceps Curl</p>
     <div class="content">
-      <span class="right">9</span>
-      <span class="left">Reps Done</span>
+      <span class="right" name="repCount">0</span>
+      <span class="left" >Reps Done</span>
 </div>
 <br>
 <br>
 <br>
 <br>
 <div class="content">
-  <span class="right">2:43</span>
+  <span class="right" name="timer">0:00</span>
   <span class="left">Time</span>
 </div>
 <br>
@@ -47,7 +43,7 @@
 <br>
 <br>
 <div class="content">
-  <span class="right">29</span>
+  <span class="right" name="calories">0</span>
   <span class="left">Calories Burned</span>
 </div>
 <br>
@@ -67,8 +63,8 @@
 
   </div>
   </div>
-  <script type="text/javascript" src="/logic/js/app.js"></script>
-  <script type="text/javascript" src="/logic/js/bicepCurl.js"></script>
+  <script src="sketch.js"></script>
+
 </body>
 </html>
 
