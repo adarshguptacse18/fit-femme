@@ -22,7 +22,7 @@ const exerciseInfo = {
     lowerLimit: 80,
   },
   crunches: {
-    index: [12, 24, 26],
+    index: [6, 12, 14],
     upperLimit: 130,
     lowerLimit: 50,
   },
@@ -63,6 +63,7 @@ function gotPoses(poses) {
       });
     }
     const angle = Math.round(find_angle(...points));
+    console.log(angle); 
     if(angle > exerciseInfo[excerciseType].upperLimit) {
         if(dir == 0) {
             dir = 1;
