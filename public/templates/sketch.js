@@ -10,6 +10,7 @@ let shouldTimerStart = false;
 const repCountElement = document.getElementsByName('repCount')[0];
 const caloriesElement = document.getElementsByName('calories')[0];
 const endButton = document.getElementsByTagName('button')[0];
+const musicButton = document.getElementsByName('music')[0];
 const exerciseInfo = {
   bicepCurls: {
     index: [6, 8, 10],
@@ -146,3 +147,21 @@ try{
 }
 
 endButton.addEventListener('click', stopTimer)
+
+
+const musicUrl = 'https://firebasestorage.googleapis.com/v0/b/fitandfemme-24ce4.appspot.com/o/Project%20Name%20(online-audio-converter.com).mp3?alt=media&token=e7ebb68f-dba6-449f-8427-75e8a979d27d';
+
+const audio = new Audio(musicUrl);
+let isPlaying = 0;
+
+
+
+  setInterval(() => {
+    let shouldPlay = musicButton.checked;
+    if(shouldPlay !== isPlaying) {
+      console.log(shouldPlay);
+      if(shouldPlay) audio.play();
+      else audio.pause();
+      isPlaying = shouldPlay;
+    };
+  }, 500);
